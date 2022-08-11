@@ -1,20 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import SearchScreen from './src/screens/SearchScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+const navigator = createStackNavigator({
+  Search: SearchScreen
+}, {
+  initialRouteName: 'Search',
+  defaultNavigationOptions: {
+    title: 'Buzinezz Search'
+  }
 });
+
+export default createAppContainer(navigator) //1 
+
+
+//1 createAppContainer() -> Since navigator is not a component, this 
+//  function creates a default react component and displays it inside that App component
+//  App.js file is used as default export and displayed as first component on the device screen
